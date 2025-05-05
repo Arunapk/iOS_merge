@@ -12,8 +12,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
-        view.backgroundColor = .purple
+        loadUI()
+    }
+    
+    
+    private func loadUI(){
+        view.backgroundColor = .red
     }
     
     func basicTestAboutCodeCoverage(){
