@@ -19,6 +19,10 @@ class ViewController: UIViewController {
     private func loadUI(){
         view.backgroundColor = .red
     }
+    
+    func basicTestAboutCodeCoverage(){
+        
+    }
 
 
 }
