@@ -13,11 +13,14 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        view.backgroundColor = .red
+        view.backgroundColor = .purple
     }
     
     func basicTestAboutCodeCoverage(){
-        
+        let basicVM = BasicViewModel()
+        Task{
+            await basicVM.fetchUserList()
+        }
     }
 
 
