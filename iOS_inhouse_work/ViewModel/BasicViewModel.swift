@@ -9,4 +9,7 @@ import Foundation
 
 actor BasicViewModel{
     
+    func fetchUserList(){
+        
+    }
 }

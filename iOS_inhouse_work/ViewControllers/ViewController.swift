@@ -21,7 +21,10 @@ class ViewController: UIViewController {
     }
     
     func basicTestAboutCodeCoverage(){
-        
+        let basicVM = BasicViewModel()
+        Task{
+            await basicVM.fetchUserList()
+        }
     }
 
 
