@@ -6,24 +6,47 @@
 //
 
 import UIKit
+import Combine
 
-class StateController: UIViewController {
+final class StateController: UIViewController {
+    
+    @MyState private var bgColor: UIColor = .orange
+    
+    var cancellable = Set<AnyCancellable>()
+    
+    var refreshTimer: Timer?
+    
+    var value: Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        view.backgroundColor = bgColor
+        
+        refreshTimer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(timerUpdate), userInfo: nil, repeats: true)
+        
+        receiver()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func receiver(){
+        $bgColor
+            .receive(on: RunLoop.main)
+            .sink { [weak self] newColor in
+                self?.view.backgroundColor = newColor
+            }
+            .store(in: &cancellable)
     }
-    */
-
+    
+    @objc func timerUpdate(){
+        value += 3
+        
+        if value == 15{
+            refreshTimer?.invalidate()
+            refreshTimer = nil
+        }
+        
+        bgColor = .random
+        
+        print("color changed : \(value)")
+    }
+    
 }
