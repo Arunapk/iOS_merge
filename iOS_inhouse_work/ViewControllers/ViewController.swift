@@ -25,6 +25,12 @@ class ViewController: UIViewController {
         Task{
             await basicVM.fetchUserList()
         }
+
+        view.backgroundColor = .green
+        
+        var label = UILabel()
+        label.text = "Test Content"
+        view.addSubview(label)
     }
 }
 
