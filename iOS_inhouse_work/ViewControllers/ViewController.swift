@@ -12,6 +12,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        self.loadAnimateCustomView()
         loadUI()
     }
     
@@ -25,12 +26,15 @@ class ViewController: UIViewController {
         Task{
             await basicVM.fetchUserList()
         }
-
-        view.backgroundColor = .green
-        
         var label = UILabel()
         label.text = "Test Content"
         view.addSubview(label)
+    }
+    
+    func loadAnimateCustomView(){
+        let animatedView = AnimatedView(frame: CGRect(x: 100, y: 100, width: 150, height: 150))
+        view.addSubview(animatedView)
+        animatedView.animateIn()
     }
 }
 
