@@ -21,7 +21,7 @@ final class StateController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = bgColor
-        
+        loadAnimateCustomView()
         refreshTimer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(timerUpdate), userInfo: nil, repeats: true)
         
         receiver()
@@ -47,6 +47,12 @@ final class StateController: UIViewController {
         bgColor = .random
         
         print("color changed : \(value)")
+    }
+    
+    func loadAnimateCustomView(){
+        let animatedView = AnimatedView(frame: CGRect(x: 100, y: 100, width: 150, height: 150))
+        view.addSubview(animatedView)
+        animatedView.animateIn()
     }
     
 }

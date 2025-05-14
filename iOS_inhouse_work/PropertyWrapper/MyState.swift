@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 @propertyWrapper
-final class MyState<Value>{
+struct MyState<Value>{
     
     private var subject: CurrentValueSubject<Value, Never>
     
