@@ -12,6 +12,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        Task{
+            await basicTestAboutCodeCoverage()
+        }
         loadUI()
     }
     
@@ -24,11 +27,11 @@ class ViewController: UIViewController {
         view.addSubview(label)
     }
     
-    func basicTestAboutCodeCoverage(){
+    func basicTestAboutCodeCoverage() async{
         let basicVM = BasicViewModel()
-        Task{
+//        Task{
             await basicVM.fetchUserList()
-        }
+//        }
     }
     
     
